@@ -17,6 +17,33 @@ func TestRepeat(t *testing.T) {
 	})
 }
 
+func TestRepeatTrim(t *testing.T) {
+	repeated := RepeatUpper("go", 10)
+	expected := "gggggggggg"
+
+	t.Run("expected 10 'g' after 'o' is trimmmed", func(t *testing.T) {
+		utilAssertCorrectValue(t, expected, repeated)
+	})
+}
+
+func TestRepeatUpper(t *testing.T) {
+	repeated := RepeatUpper("hi", 3)
+	expected := "HIHIHI"
+
+	t.Run("expected 'hi' repeated 3 times", func(t *testing.T) {
+		utilAssertCorrectValue(t, expected, repeated)
+	})
+}
+
+func TestRepeatLower(t *testing.T) {
+	repeated := RepeatUpper("HI", 3)
+	expected := "hihihi"
+
+	t.Run("expected 'hi' repeated 3 times", func(t *testing.T) {
+		utilAssertCorrectValue(t, expected, repeated)
+	})
+}
+
 /*
 ~/personal/go/go-with-tests/iteration ~/personal/go/go-with-tests
 goos: darwin

@@ -11,22 +11,25 @@ import "testing"
 *  5. In order to use the *testing.T type, you need to import "testing", like we did with fmt in the other file
  */
 
+// Utility function to reduce code duplication - not DRY
+func utilAssertCorrectMessage(test testing.TB, got, want string) {
+	test.Helper()
+	if got != want {
+		test.Errorf("got %q want %q", got, want)
+	}
+}
+
+// Test Hello func to verify providing a string return Hello + string, or default hello + world
 func TestHello(t *testing.T) {
 	t.Run("saying hello to Chris", func(t *testing.T) {
 		got := Hello("Chris")
 		want := "Hello, Chris"
-
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		utilAssertCorrectMessage(t, got, want)
 	})
 
 	t.Run("saying 'Hello, World' if no name string is passed", func(t *testing.T) {
 		got := Hello("")
 		want := "Hello, World!"
-
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		utilAssertCorrectMessage(t, got, want)
 	})
 }

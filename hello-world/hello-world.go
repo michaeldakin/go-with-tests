@@ -2,33 +2,36 @@ package main
 
 import "fmt"
 
-const defaultHelloPrefix = "Hello, "
-const esHelloPrefix = "Hola, "
-const frHelloPrefix = "Bonjour, "
+const (
+	es = "Spanish"
+	fr = "French"
+
+	defaultHelloPrefix = "Hello"
+	esHelloPrefix      = "Hola"
+	frHelloPrefix      = "Bonjour"
+)
 
 func Hello(name, lang string) string {
-	// If no name is supplied, defualt "World!"
 	if name == "" {
 		name = "World!"
 	}
 
-	// Determine prefix
-	return greetingPrefix(lang) + name
+	return greetingPrefix(lang) + ", " + name
 }
 
-func greetingPrefix(lang string) string {
-	var prefix string
-	// language check after valid name check
+func greetingPrefix(lang string) (prefix string) {
+	// var prefix string
 	switch lang {
-	case "es":
+	case es:
 		prefix = esHelloPrefix
-	case "fr":
+	case fr:
 		prefix = frHelloPrefix
 	default:
 		prefix = defaultHelloPrefix
 	}
 
-	return prefix
+	// inferred 'prefix' return as declared in func
+	return
 }
 
 func main() {

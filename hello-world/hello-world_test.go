@@ -9,6 +9,8 @@ import "testing"
 *  3. The test function takes one argument only t *testing.T
 *  4. The test function must be in the same package as the code being tested
 *  5. In order to use the *testing.T type, you need to import "testing", like we did with fmt in the other file
+*
+* Using %q adds quotation marks " " around strings
  */
 
 // Utility function to reduce code duplication - not DRY

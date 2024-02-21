@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const enHelloPrefix = "Hello, "
+const defaultHelloPrefix = "Hello, "
 const esHelloPrefix = "Hola, "
 const frHelloPrefix = "Bonjour, "
 
@@ -12,16 +12,23 @@ func Hello(name, lang string) string {
 		name = "World!"
 	}
 
+	// Determine prefix
+	return greetingPrefix(lang) + name
+}
+
+func greetingPrefix(lang string) string {
+	var prefix string
 	// language check after valid name check
 	switch lang {
 	case "es":
-		return esHelloPrefix + name
+		prefix = esHelloPrefix
 	case "fr":
-		return frHelloPrefix + name
+		prefix = frHelloPrefix
 	default:
-		// We must have a name and are not a language opt we offer, default to English
-		return enHelloPrefix + name
+		prefix = defaultHelloPrefix
 	}
+
+	return prefix
 }
 
 func main() {

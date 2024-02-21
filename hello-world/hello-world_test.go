@@ -1,4 +1,3 @@
-// package helloworld
 package main
 
 import "testing"
@@ -13,11 +12,21 @@ import "testing"
  */
 
 func TestHello(t *testing.T) {
-	got := Hello("Chris")
-	want := "Hello, Chris"
+	t.Run("saying hello to Chris", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello, Chris"
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 
+	t.Run("saying 'Hello, World' if no name string is passed", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World!"
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 }

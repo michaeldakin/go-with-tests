@@ -4,6 +4,7 @@ import "fmt"
 
 const enHelloPrefix = "Hello, "
 const esHelloPrefix = "Hola, "
+const frHelloPrefix = "Bonjour, "
 
 func Hello(name, lang string) string {
 	// If no name is supplied, defualt "World!"
@@ -12,13 +13,15 @@ func Hello(name, lang string) string {
 	}
 
 	// language check after valid name check
-	if lang == "es" {
+	switch lang {
+	case "es":
 		return esHelloPrefix + name
+	case "fr":
+		return frHelloPrefix + name
+	default:
+		// We must have a name and are not a language opt we offer, default to English
+		return enHelloPrefix + name
 	}
-
-	// We must have a name and are not a language opt we offer, default to English
-	return enHelloPrefix + name
-
 }
 
 func main() {

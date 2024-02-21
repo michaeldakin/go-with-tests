@@ -22,14 +22,20 @@ func utilAssertCorrectMessage(test testing.TB, got, want string) {
 // Test Hello func to verify providing a string return Hello + string, or default hello + world
 func TestHello(t *testing.T) {
 	t.Run("saying hello to Chris", func(t *testing.T) {
-		got := Hello("Chris")
+		got := Hello("Chris", "")
 		want := "Hello, Chris"
 		utilAssertCorrectMessage(t, got, want)
 	})
 
 	t.Run("saying 'Hello, World' if no name string is passed", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "en")
 		want := "Hello, World!"
+		utilAssertCorrectMessage(t, got, want)
+	})
+
+	t.Run("saying hello in spanish", func(t *testing.T) {
+		got := Hello("Javier", "es")
+		want := "Hola, Javier"
 		utilAssertCorrectMessage(t, got, want)
 	})
 }

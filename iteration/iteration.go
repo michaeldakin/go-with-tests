@@ -24,6 +24,7 @@ func RepeatLower(character string, repeatCount int) string {
 }
 
 func RepeatTrim(character string, repeatCount int) string {
-	string := Repeat(character, repeatCount)
-	return strings.Trim(string, "o")
+	strTrim := strings.Trim(character, "o")
+	str := Repeat(strTrim, repeatCount)
+	return str
 }
